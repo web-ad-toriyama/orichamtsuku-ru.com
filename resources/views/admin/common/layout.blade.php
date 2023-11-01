@@ -94,6 +94,36 @@
                     </a>
 
 				</li>
+                <li class="ac_box">
+                    <a class="font_thum_14" href="{{ url('wb-admin/production') }}">
+                        納品実績
+                    </a>
+                </li>
+                <li class="ac_box">
+                    <a class="font_thum_14" href="{{ url('wb-admin/voice') }}">
+                        お客様の声
+                    </a>
+                </li>
+                <li class="ac_box">
+                    <a class="font_thum_14" href="{{ url('wb-admin/category') }}">
+                        カテゴリ情報
+                    </a>
+                </li>
+                <li class="ac_box">
+                    <a class="font_thum_14" href="{{ url('wb-admin/sample') }}">
+                        サンプル情報
+                    </a>
+                </li>
+                <li class="ac_box">
+                    <a class="font_thum_14" href="{{ url('wb-admin/template') }}">
+                        テンプレート情報
+                    </a>
+                </li>
+                <li class="ac_box">
+                    <a class="font_thum_14" href="{{ url('wb-admin/template_password') }}">
+                        テンプレートパスワード
+                    </a>
+                </li>
 			</ul>
 			<div class="bt_nav">
 				<a href="{{ env('APP_URL') }}"><span class="material-icons">open_in_new</span>ホームページを確認する</a>
@@ -121,9 +151,10 @@
 	</div>
 --}}
 {{-- CKEditor --}}
-<script src="//cdn.ckeditor.com/4.15.0/full/ckeditor.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="{{ url('admin/js/ckeditor.js') }}"></script>
-<script src="{{ url('admin/js/common.js') }}"></script>
+    <script src="//cdn.ckeditor.com/4.15.0/full/ckeditor.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ url('admin/js/ckeditor.js') }}"></script>
+    <script src="{{ url('admin/js/Sortable.min.js') }}"></script>
+    <script src="{{ url('admin/js/common.js') }}"></script>
 </body>
 </html>

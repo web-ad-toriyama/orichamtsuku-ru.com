@@ -113,6 +113,31 @@ $(function () {
 	});
 });
 
+// ナビゲーションメニューの背景色を変える
+$(function(){
+	var url = location.origin + location.pathname + location.search;
+	  $('nav li a').each(function(){
+		  var $href = $(this).prop('href');
+		  if (url === $href) {
+			  $(this).parents('.ac_box,li').addClass('current');
+		  }
+	});
+});
+
+
+// .max975のpadding-bottomの値を決める
+// $(function(){
+// 	var vh = $(window).height();
+// 	var header = $('.fix_menu').height();
+// 	var main = $('main').height();
+// 	var footer = $('.footer_wrapper').height();
+// 	var height = vh - header - main - footer;
+// 	if (window.matchMedia('(min-height: 670px)').matches){
+// 		$('.max975').css('padding-bottom',height);
+// 	}else{
+// 		$('.max975').css('padding-bottom',150);
+// 	}
+// });
 
 // まとめて削除ボタン
 $(function() {
@@ -128,40 +153,12 @@ $(function() {
 // 削除アラート
 $(function(){
 	$('.delete,.bt_delete').on('click',function(){
-        // カテゴリー削除の場合、データをチェック
-        if($(this).hasClass("delete_category")) {
-            // チェックされている値を配列に格納
-            let related_categories = [];
-            $('.check_delete:checked').map(function(){
-                value = $(this).val();
-                related_flg = $('#related_flg' + value).val();
+		var res = confirm("本当に削除しますか？");
+		if( res == true ) {
 
-                // related_flgがtrue(1)の場合、カテゴリー名をbタグから取得
-                if (related_flg === '1') {
-                    let len = $('label[for="post0' + value + '"]').length;
-                    console.log(len);
-                    related_categories.push($('label[for="post0' + value + '"]').find('b').text());
-                }
-            });
-            // 紐付けのあるカテゴリーが存在しない場合、削除の確認
-            if (!related_categories.length) {
-                var res = confirm("本当に削除しますか？");
-                if( res == true ) {
-                }else {
-                    return false;
-                }
-            } else {
-                var res = alert("以下のカテゴリーに紐づく商品があるため、削除を実行できません。\n" + related_categories);
-                return false;
-            }
-        } else {
-		    var res = confirm("本当に削除しますか？");
-		    if( res == true ) {
-
-		    }else {
-                return false;
-		    }
-        }
+		}else {
+            return false;
+		}
 	});
 });
 
@@ -176,7 +173,6 @@ $(function(){
 			$('.tgl_bt,.bt_edit').addClass('disabled');
 			$('.delete').css('display','flex');
 			$('.add').hide();
-			$('.sort').hide();
 			$(check).on('change',function() {
 				var len = $('.check_delete:checked').length;
 				if (len >= 1) {
@@ -198,7 +194,6 @@ $(function(){
 		$('.tgl_bt,.bt_edit').removeClass('disabled');
 		$('.delete').hide();
 		$('.add').show();
-		$('.sort').show();
 		$(check).removeAttr("checked").prop("checked", false).change();
 		}
 	})
@@ -209,13 +204,6 @@ $(function () {
 	$('.bubbly_box').on('click', function () {
 		$(this).addClass('bubbly_box_hide');
 	});
-});
-
-// カテゴリー選択
-$(function () {
-    $('#sel_category').on('change', function () {
-        window.location.href = '/wb-admin/post/sort/'+$(this).val();
-    });
 });
 
 /*SEOタグ入力フォーム*/
@@ -284,7 +272,3 @@ $(function () {
         }
 	});
 });
-
-// 一覧並び替え
-var el = document.getElementById('items');
-var sortable = Sortable.create(el);

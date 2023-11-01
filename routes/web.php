@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\TemplateAuthController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\NewsController;
@@ -8,6 +9,12 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\LogController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\ProductionController;
+use App\Http\Controllers\Admin\VoiceController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SampleController;
+use App\Http\Controllers\Admin\TemplateController;
+use App\Http\Controllers\Admin\TemplatePasswordController;
 use App\Http\Controllers\Category1Controller;
 use App\Http\Controllers\Category2Controller;
 use App\Http\Controllers\Category3Controller;
@@ -16,6 +23,10 @@ use App\Http\Controllers\Category5Controller;
 use App\Http\Controllers\Category6Controller;
 use App\Http\Controllers\Category7Controller;
 use App\Http\Controllers\Category8Controller;
+use App\Http\Controllers\Category9Controller;
+use App\Http\Controllers\Category10Controller;
+use App\Http\Controllers\Category11Controller;
+use App\Http\Controllers\Category12Controller;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\IndexController as OfficialIndexController;
 use Illuminate\Support\Facades\Route;
@@ -48,12 +59,22 @@ Route::post(config('custom.page.contact_confirm.url'), [ContactController::class
 Route::post(config('custom.page.contact_send.url'), [ContactController::class, 'send'])->name(config('custom.page.contact_send.route'));
 Route::get(config('custom.page.contact_confirm.url'), [ContactController::class, 'error']);
 Route::get(config('custom.page.contact_send.url'), [ContactController::class, 'error']);
+Route::get(config('custom.page.category9.url'), [Category9Controller::class, 'index'])->name(config('custom.page.category9.route'));
+Route::get(config('custom.page.category10.url'), [Category10Controller::class, 'index'])->name(config('custom.page.category10.route'));
+Route::get(config('custom.page.category12.url'), [Category12Controller::class, 'index'])->name(config('custom.page.category12.route'));
 
+//Route::middleware('template_auth')->group(function () {
+    Route::get(config('custom.page.category11.url'), [Category11Controller::class, 'index'])->name(config('custom.page.category11.route'));
+//});
 
 // 認証
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+// 認証
+Route::get('/template_login', [TemplateAuthController::class, 'login'])->name('template_login');
+Route::post('/template_login', [TemplateAuthController::class, 'postLogin']);
+Route::get('/template_logout', [TemplateAuthController::class, 'logout'])->name('template_logout');
 
 // 管理画面
 Route::name('wb-admin.')->prefix('wb-admin')->middleware('auth')->group(function () {
@@ -86,6 +107,60 @@ Route::name('wb-admin.')->prefix('wb-admin')->middleware('auth')->group(function
     Route::get('/page/edit/{id?}', [PageController::class, 'edit'])->name('page.edit');
     Route::post('/page/edit/{id?}', [PageController::class, 'postEdit'])->name('page.postEdit');
     Route::get('/page/edits', [PageController::class, 'error']);
+
+    // 投稿機能
+    Route::get('/production', [ProductionController::class, 'index'])->name('production.index');
+    Route::post('/production', [ProductionController::class, 'postIndex']);
+    Route::get('/production/add', [ProductionController::class, 'add'])->name('production.add');
+    Route::post('/production/add', [ProductionController::class, 'postAdd']);
+    Route::get('/production/edit/{id}', [ProductionController::class, 'edit'])->name('production.edit');
+    Route::post('/production/edit/{id}', [ProductionController::class, 'postEdit']);
+    Route::get('/production/display/{id}', [ProductionController::class, 'display'])->name('production.display');
+    // 投稿機能
+    Route::get('/voice', [VoiceController::class, 'index'])->name('voice.index');
+    Route::post('/voice', [VoiceController::class, 'postIndex']);
+    Route::get('/voice/add', [VoiceController::class, 'add'])->name('voice.add');
+    Route::post('/voice/add', [VoiceController::class, 'postAdd']);
+    Route::get('/voice/edit/{id}', [VoiceController::class, 'edit'])->name('voice.edit');
+    Route::post('/voice/edit/{id}', [VoiceController::class, 'postEdit']);
+    Route::get('/voice/display/{id}', [VoiceController::class, 'display'])->name('voice.display');
+
+    // 商品カテゴリー機能
+    Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+    Route::post('/category', [CategoryController::class, 'postIndex']);
+    Route::get('/category/add', [CategoryController::class, 'add'])->name('category.add');
+    Route::post('/category/add', [CategoryController::class, 'postAdd']);
+    Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::post('/category/edit/{id}', [CategoryController::class, 'postEdit']);
+    Route::get('/category/display/{id}', [CategoryController::class, 'display'])->name('category.display');
+    Route::get('/category/sort', [CategoryController::class, 'sort'])->name('category.sort');
+    Route::post('/category/sort', [CategoryController::class, 'postSort']);
+    // 投稿機能
+    Route::get('/sample', [SampleController::class, 'index'])->name('sample.index');
+    Route::post('/sample', [SampleController::class, 'postIndex']);
+    Route::get('/sample/add', [SampleController::class, 'add'])->name('sample.add');
+    Route::post('/sample/add', [SampleController::class, 'postAdd']);
+    Route::get('/sample/edit/{id}', [SampleController::class, 'edit'])->name('sample.edit');
+    Route::post('/sample/edit/{id}', [SampleController::class, 'postEdit']);
+    Route::get('/sample/display/{id}', [SampleController::class, 'display'])->name('sample.display');
+    Route::get('/sample/sort/{category_id?}', [SampleController::class, 'sort'])->name('sample.sort');
+    Route::post('/sample/sort', [SampleController::class, 'postSort']);
+
+    // 投稿機能
+    Route::get('/template', [TemplateController::class, 'index'])->name('template.index');
+    Route::post('/template', [TemplateController::class, 'postIndex']);
+    Route::get('/template/add', [TemplateController::class, 'add'])->name('template.add');
+    Route::post('/template/add', [TemplateController::class, 'postAdd']);
+    Route::get('/template/edit/{id}', [TemplateController::class, 'edit'])->name('template.edit');
+    Route::post('/template/edit/{id}', [TemplateController::class, 'postEdit']);
+    Route::get('/template/display/{id}', [TemplateController::class, 'display'])->name('template.display');
+    Route::get('/template/sort/{category_id?}', [TemplateController::class, 'sort'])->name('template.sort');
+    Route::post('/template/sort', [TemplateController::class, 'postSort']);
+
+    // 基本情報設定
+    Route::get('/template_password', [TemplatePasswordController::class, 'index'])->name('template_password.index');
+    Route::post('/template_password', [TemplatePasswordController::class, 'postIndex']);
+
     // お問合せログ
     Route::get('/log', [LogController::class, 'index'])->name('log.index');
 });

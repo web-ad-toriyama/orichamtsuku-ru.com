@@ -92,6 +92,26 @@ return [
             'route' => 'contact.send',
             'name' => 'CONTACT SEND'
         ],
+        'category9' => [
+            'url' => '/productions',
+            'route' => 'productions',
+            'name' => 'PRODUCTIONS'
+        ],
+        'category10' => [
+            'url' => '/voices',
+            'route' => 'voices',
+            'name' => 'VOICES'
+        ],
+        'category11' => [
+            'url' => '/templates',
+            'route' => 'templates',
+            'name' => 'TEMPLATES'
+        ],
+        'category12' => [
+            'url' => '/samples',
+            'route' => 'samples',
+            'name' => 'SAMPLES'
+        ],
         // ----------------------------------------------------------------
 
     ],
@@ -159,6 +179,9 @@ return [
     // 画像保存先ディレクトリ名
     'directory' => [
         'post' => 'posts',
+        'category' => 'categories',
+        'sample' => 'samples',
+        'template' => 'templates',
     ],
 
 ];

@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'template_password' => [
+            'driver' => 'session',
+            'provider' => 'template_passwords',
+        ],
     ],
 
     /*
@@ -64,7 +68,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
+        'template_password' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\TemplatePassword::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -90,6 +97,11 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'template_password' => [
+            'provider' => 'template_passwords',
             'expire' => 60,
             'throttle' => 60,
         ],

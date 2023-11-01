@@ -280,7 +280,6 @@ thanksページ
 }
 #operation .ac_content {
 	padding: 16px 24px 32px;
-	background: #fff;
 }
 #operation .ac_content p {
 	text-align: justify;
@@ -351,7 +350,6 @@ thanksページ
 }
 #contactlog .ac_content {
 	padding: 24px 24px 32px;
-	background: #fff;
 }
 #contactlog .ac_content li + li {
 	margin-top: 24px;
@@ -381,30 +379,6 @@ thanksページ
 #account .form_wrapper .p-region {
 	display: block;
 	width: calc(100% / 3);
-}
-/*--------------------------------------
-
-リスト
-
----------------------------------------*/
-.list_card {
-    gap: 1rem;
-}
-.list_card li {
-    width: calc((100% - 10px * 7) / 8);
-    max-width: 400px;
-    min-width: 300px;
-}
-.list_card .list_box {
-    padding: 10px
-}
-.list_box .img_box img {
-    height: 120px;
-}
-
-.list_card li .list_ttl b {
-    font-size: 1.3rem;
-	line-height: 1.4;
 }
 /*--------------------------------------
 

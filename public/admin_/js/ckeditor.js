@@ -11,7 +11,7 @@ $(function () {
         // Shift+Enterを押した際に段落タグを挿入
         // shiftEnterMode: CKEDITOR.ENTER_P,
         // idやclassを指定可能にする
-        // allowedContent: true,
+        allowedContent: true,
         // ファイルマネージャー関連
         filebrowserImageBrowseUrl: "/laravel-filemanager?type=Images",
         filebrowserImageUploadUrl:"/laravel-filemanager/upload?type=Images&_token="+CSRFToken,

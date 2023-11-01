@@ -49,6 +49,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'category' => [
+            'driver' => 'local',
+            'root' => public_path('storage/'.config('custom.directory.category')),
+            'url' => env('APP_URL').'/storage/'.config('custom.directory.category'),
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',
