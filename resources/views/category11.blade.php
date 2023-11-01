@@ -15,6 +15,7 @@
                 <div class="secondary_title">
                     <h3>h:3見出しが入ります</h3>
                 </div>
+                {{Form::select('category_id', $select, $post->category_id ?? '',['class'=>'is-empty'])}}
                 <div class="box">
                     @foreach ($templates as $post)
                         <section>
