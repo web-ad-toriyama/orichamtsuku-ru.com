@@ -45,9 +45,9 @@ class TemplateAuthController extends Controller
         $credentials = $request->validate([
             'password' => ['required'],
         ]);
-        if (TemplatePassword::attempt($credentials)) {
+        if (Auth::guard('template_passwords')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('template');
+            return redirect()->route(config('custom.page.category11.route'));
         }
         return back()->withErrors([
             'email' => 'ログインに失敗しました。',
