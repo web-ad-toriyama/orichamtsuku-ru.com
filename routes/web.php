@@ -63,9 +63,9 @@ Route::get(config('custom.page.category9.url'), [Category9Controller::class, 'in
 Route::get(config('custom.page.category10.url'), [Category10Controller::class, 'index'])->name(config('custom.page.category10.route'));
 Route::get(config('custom.page.category12.url'), [Category12Controller::class, 'index'])->name(config('custom.page.category12.route'));
 
-//Route::middleware('template_auth')->group(function () {
+Route::middleware('template_auth')->group(function () {
     Route::get(config('custom.page.category11.url'), [Category11Controller::class, 'index'])->name(config('custom.page.category11.route'));
-//});
+});
 
 // 認証
 Route::get('/login', [AuthController::class, 'login'])->name('login');

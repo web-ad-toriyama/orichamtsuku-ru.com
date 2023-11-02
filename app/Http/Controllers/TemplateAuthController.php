@@ -18,7 +18,7 @@ class TemplateAuthController extends Controller
     public function login()
     {
         // ログイン状態の場合、管理画面にリダイレクトさせる
-        if (Auth::check()) {
+        if (Auth::guard('template_passwords')->check()) {
             return redirect()->route(config('custom.page.category11.route'));
         }
         return view('login');
