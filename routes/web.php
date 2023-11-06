@@ -63,18 +63,24 @@ Route::get(config('custom.page.category9.url'), [Category9Controller::class, 'in
 Route::get(config('custom.page.category10.url'), [Category10Controller::class, 'index'])->name(config('custom.page.category10.route'));
 Route::get(config('custom.page.category12.url'), [Category12Controller::class, 'index'])->name(config('custom.page.category12.route'));
 
-Route::middleware('template_auth')->group(function () {
+Route::middleware(['auth.custom:templates'])->group(function () {
     Route::get(config('custom.page.category11.url'), [Category11Controller::class, 'index'])->name(config('custom.page.category11.route'));
 });
+// 認証
+Route::controller(\App\Http\Controllers\AuthController::class)->group(function () {
+    Route::get('/login/{guard}', 'Login')->where('guard', 'admin|templates');
+    Route::post('/login/{guard}', 'postLogin')->where('guard', 'admin|templates');
+    Route::get('/logout/{guard}', 'Logout')->where('guard', 'admin|templates');
+});
 
-// 認証
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login', [AuthController::class, 'postLogin']);
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-// 認証
-Route::get('/template_login', [TemplateAuthController::class, 'login'])->name('template_login');
-Route::post('/template_login', [TemplateAuthController::class, 'postLogin']);
-Route::get('/template_logout', [TemplateAuthController::class, 'logout'])->name('template_logout');
+// Route::get('/template_login', [TemplateAuthController::class, 'login'])->name('template_login');
+// Route::post('/template_login', [TemplateAuthController::class, 'postLogin']);
+// Route::get('/template_logout', [TemplateAuthController::class, 'logout'])->name('template_logout');
+// // // 認証
+// Route::get('/login', [AuthController::class, 'login'])->name('login');
+// Route::post('/login', [AuthController::class, 'postLogin']);
+// Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
 
 // 管理画面
 Route::name('wb-admin.')->prefix('wb-admin')->middleware('auth')->group(function () {

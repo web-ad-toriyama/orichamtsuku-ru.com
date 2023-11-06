@@ -17,7 +17,7 @@ class AuthController extends Controller
     public function login()
     {
         // ログイン状態の場合、管理画面にリダイレクトさせる
-        if (Auth::check()) {
+        if (Auth::guard('web')->check()) {
             return redirect()->route('wb-admin.dashboard');
         }
         return view('admin.login');
@@ -46,7 +46,7 @@ class AuthController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('web')->attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->route('wb-admin.dashboard');
         }
@@ -63,8 +63,8 @@ class AuthController extends Controller
      */
     public function logout(Request $request)
     {
-        Auth::logout();
-        $request->session()->invalidate();
+        Auth::guard('web')->logout();
+        // $request->session()->invalidate();
         $request->session()->regenerateToken();
 
         return redirect()->route('login');

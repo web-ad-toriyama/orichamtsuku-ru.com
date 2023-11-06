@@ -24,7 +24,7 @@
                         @endforeach
                     </ul>
                 @endif
-            <div class="box_form">
+           <!--  <div class="box_form">
                 <label class="form_label" for="email">メールアドレス</label>
                 {{ Form::email
                     ('email', null,
@@ -34,7 +34,7 @@
                         ]
                     )
                 }}
-            </div>                
+            </div>      -->           
                 <div class="box_form">
                     <label class="form_label" for="password">パスワード</label>
                     {{ Form::password

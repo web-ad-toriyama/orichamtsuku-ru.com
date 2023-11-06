@@ -34,6 +34,7 @@ class TemplateAuthController extends Controller
     {
         // バリデーション
         $validator = Validator::make($request->all(), [
+            // 'email' => 'required',
             'password' => 'required',
         ]);
         if ($validator->fails()) {
@@ -42,7 +43,9 @@ class TemplateAuthController extends Controller
                         ->withInput();
         }
         // 認証処理
+        $request->merge(['email' => 'toriyama@web-ad.co.jp']);
         $credentials = $request->validate([
+            'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
         if (Auth::guard('template_passwords')->attempt($credentials)) {
@@ -62,8 +65,8 @@ class TemplateAuthController extends Controller
      */
     public function logout(Request $request)
     {
-        Auth::logout();
-        $request->session()->invalidate();
+        Auth::guard('templates')->logout();
+        // $request->session()->invalidate();
         $request->session()->regenerateToken();
 
         return redirect()->route('template_login');

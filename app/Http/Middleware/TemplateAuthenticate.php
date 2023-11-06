@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Support\Facades\Auth;
 
 class TemplateAuthenticate extends Middleware
 {
@@ -14,7 +15,7 @@ class TemplateAuthenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
+        if (!Auth::guard('templates')->check()) {
             return route('template_login');
         }
     }
