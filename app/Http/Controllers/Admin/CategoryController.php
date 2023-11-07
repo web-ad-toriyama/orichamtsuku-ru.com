@@ -49,11 +49,11 @@ class CategoryController extends Controller
     {
         try {
             DB::beginTransaction();
-            foreach ($request->input('del') as $id) {
+            foreach ($request->input('del') as $id) {exit;
                 // 該当ディレクトリ削除
-                Storage::disk('category')->deleteDirectory($id);
-                // データ削除
-                Category::destroy($id);
+//                Storage::disk('category')->deleteDirectory($id);
+//                // データ削除
+//                Category::destroy($id);
             }
             DB::commit();
         } catch (Throwable $e) {

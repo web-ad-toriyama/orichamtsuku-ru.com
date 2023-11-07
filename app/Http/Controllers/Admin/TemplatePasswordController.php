@@ -44,9 +44,10 @@ class TemplatePasswordController extends Controller
             DB::beginTransaction();
             // バリデーション済みデータの取得
             $validated = $validator->validated();
+            $form['email'] = env('TEMPLATE_LOGIN_ADDRESS');
             $form['password'] = bcrypt($validated['password']);
             // 新規登録処理
-            $post = TemplatePassword::create($form);
+            $post = TemplatePassword::updateOrCreate(['id' => 1], $form);
             DB::commit();
         } catch (Throwable $e) {
             Log::error($e);

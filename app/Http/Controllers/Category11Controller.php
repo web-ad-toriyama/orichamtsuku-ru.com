@@ -7,7 +7,7 @@ use App\Models\Category;
 
 class Category11Controller extends Controller
 {
-    public function index()
+    public function index($category_id=null)
     {
 
         $categories = Category::select('id', 'name')->orderBy('sequence', 'DESC')->get();
@@ -16,11 +16,17 @@ class Category11Controller extends Controller
             $select[$category->id] = $category->name;
         }
 
-        // お知らせ一覧取得
-        $templates = Template::where('display', config('custom.display.on'))
-            ->orderBy('id', 'DESC')
-            ->paginate(config('custom.paginate.news'));
+        if($category_id){
+            $templates = Template::where('display', config('custom.display.on'))
+                ->where('category_id', $category_id)
+                ->orderBy('id', 'DESC')
+                ->paginate(config('custom.paginate.template'));
+        }else{
+            $templates = Template::where('display', config('custom.display.on'))
+                ->orderBy('id', 'DESC')
+                ->paginate(config('custom.paginate.template'));
+        }
 
-        return view('category11', compact('templates','select'));
+        return view('category11', compact('templates','select','category_id'));
     }
 }

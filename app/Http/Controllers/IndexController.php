@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use App\Models\Post;
+use App\Models\Production;
+use App\Models\Voice;
 use Carbon\Carbon;
 
 class IndexController extends Controller
@@ -26,6 +28,20 @@ class IndexController extends Controller
                     ->limit(config('custom.limit.news'))
                     ->get();
 
-        return view('index', compact('posts', 'news'));
+        $productions = Production::where('display', config('custom.display.on'))
+            ->where('published_at', '<=', Carbon::now())
+            ->orderBy('published_at', 'DESC')
+            ->orderBy('id', 'DESC')
+            ->limit(config('custom.limit.post'))
+            ->get();
+
+        $voices = Voice::where('display', config('custom.display.on'))
+            ->where('published_at', '<=', Carbon::now())
+            ->orderBy('published_at', 'DESC')
+            ->orderBy('id', 'DESC')
+            ->limit(config('custom.limit.post'))
+            ->get();
+
+        return view('index', compact('posts', 'news', 'productions', 'voices'));
     }
 }

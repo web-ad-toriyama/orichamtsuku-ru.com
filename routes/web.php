@@ -61,16 +61,16 @@ Route::get(config('custom.page.contact_confirm.url'), [ContactController::class,
 Route::get(config('custom.page.contact_send.url'), [ContactController::class, 'error']);
 Route::get(config('custom.page.category9.url'), [Category9Controller::class, 'index'])->name(config('custom.page.category9.route'));
 Route::get(config('custom.page.category10.url'), [Category10Controller::class, 'index'])->name(config('custom.page.category10.route'));
-Route::get(config('custom.page.category12.url'), [Category12Controller::class, 'index'])->name(config('custom.page.category12.route'));
+Route::get(config('custom.page.category12.url').'/{guard?}', [Category12Controller::class, 'index'])->name(config('custom.page.category12.route'));
 
 Route::middleware(['auth.custom:templates'])->group(function () {
-    Route::get(config('custom.page.category11.url'), [Category11Controller::class, 'index'])->name(config('custom.page.category11.route'));
+    Route::get(config('custom.page.category11.url').'/{guard?}', [Category11Controller::class, 'index'])->name(config('custom.page.category11.route'));
 });
 // 認証
 Route::controller(\App\Http\Controllers\AuthController::class)->group(function () {
-    Route::get('/login/{guard}', 'Login')->where('guard', 'admin|templates');
-    Route::post('/login/{guard}', 'postLogin')->where('guard', 'admin|templates');
-    Route::get('/logout/{guard}', 'Logout')->where('guard', 'admin|templates');
+    Route::get('/login/{guard?}', 'Login')->where('guard', 'admin|templates');
+    Route::post('/login/{guard?}', 'postLogin')->where('guard', 'admin|templates');
+    Route::get('/logout/{guard?}', 'Logout')->where('guard', 'admin|templates');
 });
 
 // Route::get('/template_login', [TemplateAuthController::class, 'login'])->name('template_login');

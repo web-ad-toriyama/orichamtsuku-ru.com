@@ -11,6 +11,7 @@
     <link rel="apple-touch-icon" href="{{ url('images/apple-touch-icon.png') }}">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" / media="print" onload="this.media='all'">
     <link rel="stylesheet" href="{{ url('css/style.css') }}">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Font Awesome 6 -->
     <script src="https://kit.fontawesome.com/7f2a70e336.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.js" defer></script>
@@ -32,6 +33,8 @@
           <li>{{ link_to_route(config('custom.page.category3.route'), config('custom.page.category3.name')) }}</li>
           <li>{{ link_to_route(config('custom.page.category4.route'), config('custom.page.category4.name')) }}</li>
           <li>{{ link_to_route(config('custom.page.category5.route'), config('custom.page.category5.name')) }}</li>
+          <li>{{ link_to_route(config('custom.page.category11.route'), config('custom.page.category11.name')) }}</li>
+          <li>{{ link_to_route(config('custom.page.category12.route'), config('custom.page.category12.name')) }}</li>
         </ul>
         <p class="tel">
           <a href="tel:{{ $company->tel }}">
@@ -58,7 +61,12 @@
                 <li><a href="{{ url(config('custom.page.category6.url')) }}">{{ config('custom.page.category6.name') }}<span class="fa-stack"><i class="fa-solid fa-circle fa-stack-1x"></i><i class="fa-solid fa-caret-right fa-stack-1x"></i></span></a></li>
                 <li><a href="{{ url(config('custom.page.category8.url')) }}">{{ config('custom.page.category8.name') }}<span class="fa-stack"><i class="fa-solid fa-circle fa-stack-1x"></i><i class="fa-solid fa-caret-right fa-stack-1x"></i></span></a></li>
                 <li><a href="{{ url(config('custom.page.contact.url')) }}">{{ config('custom.page.contact.name') }}<span class="fa-stack"><i class="fa-solid fa-circle fa-stack-1x"></i><i class="fa-solid fa-caret-right fa-stack-1x"></i></span></a></li>
-                <li>
+                <li><a href="{{ url(config('custom.page.category9.url')) }}">{{ config('custom.page.category9.name') }}<span class="fa-stack"><i class="fa-solid fa-circle fa-stack-1x"></i><i class="fa-solid fa-caret-right fa-stack-1x"></i></span></a></li>
+                <li><a href="{{ url(config('custom.page.category10.url')) }}">{{ config('custom.page.category10.name') }}<span class="fa-stack"><i class="fa-solid fa-circle fa-stack-1x"></i><i class="fa-solid fa-caret-right fa-stack-1x"></i></span></a></li>
+                <li><a href="{{ url(config('custom.page.category11.url')) }}">{{ config('custom.page.category11.name') }}<span class="fa-stack"><i class="fa-solid fa-circle fa-stack-1x"></i><i class="fa-solid fa-caret-right fa-stack-1x"></i></span></a></li>
+                <li><a href="{{ url(config('custom.page.category12.url')) }}">{{ config('custom.page.category12.name') }}<span class="fa-stack"><i class="fa-solid fa-circle fa-stack-1x"></i><i class="fa-solid fa-caret-right fa-stack-1x"></i></span></a></li>
+
+                  <li>
                   <span class="sns">
                     <a href="{{ $company->twitter }}" target="_blank" class="icon"><i class="fa-brands fa-twitter"></i></a>
                     <a href="{{ $company->line }}" target="_blank" class="icon"><i class="fa-brands fa-line"></i></a>

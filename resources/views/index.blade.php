@@ -98,6 +98,62 @@
         </a>
       </div>
     </section>
+    <section class="cat cat_03" id="cat_03">
+        <div class="inner">
+            <h2 class="title"><span>PRODUCTIONS</span>制作実績</h2>
+            @if ($productions->count() > 0)
+                <div class="box">
+                    @foreach ($productions as $post)
+                        <article>
+{{--                            <a href="{{ url(config('custom.page.category3_detail.url').'/'.$post->id) }}">--}}
+                                <p>
+                                    @if(isset($post->file_path))
+                                        <img src="{{ Storage::disk('post')->url($post->file_path) }}" alt="{{ $post->title }}" loading="lazy" alt="blog_img">
+                                    @else
+                                        <img src="{{ Storage::disk('post')->url('noimage_post.jpg') }}" alt="{{ $post->title }}" loading="lazy" alt="noimage">
+                                    @endif
+                                </p>
+                                <h3>{{ $post->title }}</h3>
+                                <time>{{ \Carbon\Carbon::parse($post->published_at)->format('Y.m.d H:i') }}</time>
+                                <div class="text">{!! removalImageTag($post->contents) !!}</div>
+                                <div class="stickarrow"></div>
+{{--                            </a>--}}
+                        </article>
+                    @endforeach
+                </div>
+                {{ link_to_route(config('custom.page.category9.route'), 'More', null, ['class'=>'btn_01']) }}
+                {{-- <a href="index_3.html" class="btn_01">More</a> --}}
+            @endif
+        </div>
+    </section>
+    <section class="cat cat_03" id="cat_03">
+        <div class="inner">
+            <h2 class="title"><span>VOICES</span>お客様の声</h2>
+            @if ($voices->count() > 0)
+                <div class="box">
+                    @foreach ($voices as $post)
+                        <article>
+{{--                            <a href="{{ url(config('custom.page.category3_detail.url').'/'.$post->id) }}">--}}
+                                <p>
+                                    @if(isset($post->file_path))
+                                        <img src="{{ Storage::disk('post')->url($post->file_path) }}" alt="{{ $post->title }}" loading="lazy" alt="blog_img">
+                                    @else
+                                        <img src="{{ Storage::disk('post')->url('noimage_post.jpg') }}" alt="{{ $post->title }}" loading="lazy" alt="noimage">
+                                    @endif
+                                </p>
+                                <h3>{{ $post->title }}</h3>
+                                <time>{{ \Carbon\Carbon::parse($post->published_at)->format('Y.m.d H:i') }}</time>
+                                <div class="text">{!! removalImageTag($post->contents) !!}</div>
+                                <div class="stickarrow"></div>
+{{--                            </a>--}}
+                        </article>
+                    @endforeach
+                </div>
+                {{ link_to_route(config('custom.page.category10.route'), 'More', null, ['class'=>'btn_01']) }}
+                {{-- <a href="index_3.html" class="btn_01">More</a> --}}
+            @endif
+        </div>
+    </section>
 
     <section class="cat cat_04" id="cat_04">
       <div class="inner">

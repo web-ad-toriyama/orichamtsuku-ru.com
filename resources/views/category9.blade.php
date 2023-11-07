@@ -16,10 +16,10 @@
                     <h3>h:3見出しが入ります</h3>
                 </div>
                 <div class="box">
-                    @foreach ($news as $post)
+                    @foreach ($productions as $post)
                         <section>
                             <article>
-                                <a href="{{ url(config('custom.page.category3_detail.url').'/'.$post->id) }}">
+{{--                                <a href="{{ url(config('custom.page.category3_detail.url').'/'.$post->id) }}">--}}
                                     <p>
                                         @if(isset($post->file_path))
                                             <img src="{{ Storage::disk('post')->url($post->file_path) }}" alt="{{ $post->title }}" loading="lazy">
@@ -31,14 +31,14 @@
                                     <time>{{ \Carbon\Carbon::parse($post->published_at)->format('Y.m.d H:i') }}</time>
                                     <div class="text">{!! $post->contents !!}</div>
                                     <div class="stickarrow"></div>
-                                </a>
+{{--                                </a>--}}
                             </article>
                         </section>
                     @endforeach
                 </div>
 
                 {{-- 🍆ページネーションの現在地の装飾をお願いします --}}
-                {{ $news->links('vendor.pagination.official') }}
+                {{ $productions->links('vendor.pagination.official') }}
 
             </section>
             <!-- //ここまでページによって異なるコンテンツ部分 -->

@@ -43,7 +43,7 @@ class TemplateAuthController extends Controller
                         ->withInput();
         }
         // 認証処理
-        $request->merge(['email' => 'toriyama@web-ad.co.jp']);
+        $request->merge(['email' => env('TEMPLATE_LOGIN_ADDRESS')]);
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],

@@ -21,7 +21,7 @@
                         <label for="post0{{ $category->id }}">
                             <div class="list_box">
                                 <div class="img_box">
-                                    <img src="{{ Storage::disk('category')->url($category->file_path) }}">
+{{--                                    <img src="{{ Storage::disk('category')->url($category->file_path) }}">--}}
                                 </div>
                                 <div class="list_ttl">
                                     {{Form::input('hidden', 'id[]', $category->id)}}

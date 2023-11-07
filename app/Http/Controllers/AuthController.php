@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function login($guard)
+    public function login($guard='admin')
     {
         if ($guard === 'templates' && Auth::guard('templates')->check()) {
             return redirect()->route('templates');
@@ -17,53 +17,53 @@ class AuthController extends Controller
         return view($guard.'.login');
     }
 
-    public function postLogin($guard, Request $request)
+    public function postLogin($guard='admin', Request $request)
     {
         if($guard == 'templates'){
-            $request->merge(['email' => 'toriyama@web-ad.co.jp']);
+            $request->merge(['email' => env('TEMPLATE_LOGIN_ADDRESS')]);
         }
         $credentials = [
-            'email' => $request->input('email'),
-            'password'=>$request->input('password')];
+            'email'   => $request->input('email'),
+            'password'=> $request->input('password')];
 
         if (Auth::guard($guard)->attempt($credentials)) {
             $request->session()->regenerate();
             if ($guard === 'admin') {
                 return redirect()->route('wb-admin.dashboard');
             } elseif ($guard === 'templates') {
-                return redirect()->route('templates.index');
+                return redirect()->route(config('custom.page.category11.route'));
             }
         }
         return back()->withErrors([
             'email' => 'ログインに失敗しました。',
         ]);
     }
-    public function getAutoLogin($email, $password)
-    {
-        if(!isset($_SERVER['HTTP_REFERER']) || url('/wb-admin/shop') != $_SERVER['HTTP_REFERER']) {
-            echo '404エラー';
-            exit;
-        }
+//    public function getAutoLogin($email, $password)
+//    {
+//        if(!isset($_SERVER['HTTP_REFERER']) || url('/wb-admin/shop') != $_SERVER['HTTP_REFERER']) {
+//            echo '404エラー';
+//            exit;
+//        }
+//
+//        if (Auth::guard('shop')->check()) {
+//            return view('shop.already');
+//        }
+//
+//        $credentials = [
+//            'email' => $email,
+//            'password'=>$password
+//        ];
+//
+//        if (Auth::guard('shop')->attempt($credentials)) {
+//            return redirect()->route('shop-admin.top');
+//        }
+//
+//        return back()->withErrors([
+//            'email' => 'ログインに失敗しました。',
+//        ]);
+//    }
 
-        if (Auth::guard('shop')->check()) {
-            return view('shop.already');
-        }
-
-        $credentials = [
-            'email' => $email,
-            'password'=>$password
-        ];
-
-        if (Auth::guard('shop')->attempt($credentials)) {
-            return redirect()->route('shop-admin.top');
-        }
-
-        return back()->withErrors([
-            'email' => 'ログインに失敗しました。',
-        ]);
-    }
-
-    public function logout(Request $request, $guard)
+    public function logout(Request $request, $guard='admin')
     {
 
         Auth::guard($guard)->logout();
