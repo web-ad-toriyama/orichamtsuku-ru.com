@@ -107,6 +107,11 @@ return [
             'route' => 'templates',
             'name' => 'TEMPLATES'
         ],
+        'login_templates' => [
+            'url' => '/login/templates',
+            'route' => 'login_templates',
+            'name' => 'LOGIN_TEMPLATES'
+        ],
         'category12' => [
             'url' => '/samples',
             'route' => 'samples',
@@ -153,6 +158,8 @@ return [
     'paginate' => [
         'admin' => 20,  // 管理画面一覧
         'post' => '4',  // 投稿一覧
+        'production' => '5',  // 投稿一覧
+        'voice' => '5',  // 投稿一覧
         'news' => '1',  // お知らせ一覧
         'sample' => '5',  // お知らせ一覧
         'template' => '5',  // お知らせ一覧

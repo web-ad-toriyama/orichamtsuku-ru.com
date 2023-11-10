@@ -12,7 +12,7 @@ class Category10Controller extends Controller
         $voices = Voice::where('display', config('custom.display.on'))
             ->orderBy('published_at', 'DESC')
             ->orderBy('id', 'DESC')
-            ->paginate(config('custom.paginate.news'));
+            ->paginate(config('custom.paginate.voice'));
 
         return view('category10', compact('voices'));
     }

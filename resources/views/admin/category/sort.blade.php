@@ -1,6 +1,6 @@
 @extends('admin.common.layout')
 
-@section('title', '商品カテゴリー一覧並び替え')
+@section('title', 'カテゴリー一覧並び替え')
 
 @section('contents')
 {{ Form::open() }}

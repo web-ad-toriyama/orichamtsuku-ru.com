@@ -216,7 +216,7 @@ class VoiceController extends Controller
             'published_date' => 'required',
             'published_time' => 'required',
             'file' => 'nullable:file_path|file|image:jpeg,png,jpg,gif',
-            'contents' => 'required',
+            'contents' => 'nullable',
         ]);
 
         return $validator;

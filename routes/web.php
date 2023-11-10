@@ -68,7 +68,8 @@ Route::middleware(['auth.custom:templates'])->group(function () {
 });
 // 認証
 Route::controller(\App\Http\Controllers\AuthController::class)->group(function () {
-    Route::get('/login/{guard?}', 'Login')->where('guard', 'admin|templates');
+    Route::get('/login/{guard?}', 'Login')->where('guard', 'admin|templates')->name('login_templates');
+    Route::get('/login/{guard?}', 'Login')->where('guard', 'admin|templates')->name('login');
     Route::post('/login/{guard?}', 'postLogin')->where('guard', 'admin|templates');
     Route::get('/logout/{guard?}', 'Logout')->where('guard', 'admin|templates');
 });

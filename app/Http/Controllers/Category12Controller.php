@@ -23,7 +23,7 @@ class Category12Controller extends Controller
         }else{
             $samples = Sample::where('display', config('custom.display.on'))
                 ->orderBy('id', 'DESC')
-                ->paginate(config('custom.paginate.template'));
+                ->paginate(config('custom.paginate.sample'));
         }
 
         return view('category12', compact('samples','select','category_id'));

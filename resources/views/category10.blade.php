@@ -22,9 +22,9 @@
 {{--                                <a href="{{ url(config('custom.page.category3_detail.url').'/'.$post->id) }}">--}}
                                     <p>
                                         @if(isset($post->file_path))
-                                            <img src="{{ Storage::disk('post')->url($post->file_path) }}" alt="{{ $post->title }}" loading="lazy">
+                                            <img src="{{ Storage::disk('post')->url($post->file_path) }}" alt="{{ $post->title }}" loading="lazy" height="300" width="400">
                                         @else
-                                            <img src="{{ Storage::disk('post')->url('noimage_post.jpg') }}" alt="{{ $post->title }}" loading="lazy">
+                                            <img src="{{ Storage::disk('post')->url('noimage_post.jpg') }}" alt="{{ $post->title }}" loading="lazy" height="300" width="400">
                                         @endif
                                     </p>
                                     <h3>{{ $post->title }}</h3>

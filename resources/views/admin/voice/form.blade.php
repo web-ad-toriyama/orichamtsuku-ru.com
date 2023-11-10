@@ -43,7 +43,7 @@
 
     </li>
     <li>
-        <label for="body" class="ttl_min ic_required">内容</label>
+        <label for="body" class="ttl_min ic_optional">内容</label>
         <p class="font_annot_12">上部パネルから文字の装飾や画像の挿入が可能です。</p>
         <div class="input_wrapper">
             {{ Form::textarea('contents', ($post->contents ?? ''), ['id'=>'ckeditor']) }}

@@ -38,41 +38,19 @@ class AuthController extends Controller
             'email' => 'ログインに失敗しました。',
         ]);
     }
-//    public function getAutoLogin($email, $password)
-//    {
-//        if(!isset($_SERVER['HTTP_REFERER']) || url('/wb-admin/shop') != $_SERVER['HTTP_REFERER']) {
-//            echo '404エラー';
-//            exit;
-//        }
-//
-//        if (Auth::guard('shop')->check()) {
-//            return view('shop.already');
-//        }
-//
-//        $credentials = [
-//            'email' => $email,
-//            'password'=>$password
-//        ];
-//
-//        if (Auth::guard('shop')->attempt($credentials)) {
-//            return redirect()->route('shop-admin.top');
-//        }
-//
-//        return back()->withErrors([
-//            'email' => 'ログインに失敗しました。',
-//        ]);
-//    }
 
     public function logout(Request $request, $guard='admin')
     {
 
         Auth::guard($guard)->logout();
 
-//        自社店舗両方のログイン情報が破棄される為コメントアウト
+//        自社テンプレート両方のログイン情報が破棄される為コメントアウト
 //        $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-
+        if($guard == 'admin'){
+            $guard = '';
+        }
         return redirect('login/'.$guard);
     }
 }

@@ -1,13 +1,13 @@
 @extends('admin.common.layout')
 
-@section('title', '商品カテゴリー一覧')
+@section('title', 'カテゴリー一覧')
 
 @section('contents')
 {{ Form::open() }}
 <main class="main_top">
     <ol class="breadcrumb">
         <li>{{ link_to_route('wb-admin.dashboard', 'トップ') }}</li>
-        <li>商品カテゴリー一覧</li>
+        <li>カテゴリー一覧</li>
     </ol>
     <div class="bt_top">
         <div class="bt">

@@ -34,7 +34,7 @@
                         ]
                     )
                 }}
-            </div>      -->           
+            </div>      -->
                 <div class="box_form">
                     <label class="form_label" for="password">パスワード</label>
                     {{ Form::password
@@ -44,18 +44,6 @@
                             ]
                         )
                     }}
-                </div>
-
-                <div class="box_form">
-                    <label class="check_pass" for="check_pass">
-                        {{ Form::checkbox
-                            ('display', null, false,
-                                [
-                                'id'=>'check_pass', 'class'=>'form_control',
-                                ]
-                            )
-                        }}パスワードを表示する
-                    </label>
                 </div>
 
                 <div class="box_form">

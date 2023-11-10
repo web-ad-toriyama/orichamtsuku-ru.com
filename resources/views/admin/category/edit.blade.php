@@ -1,7 +1,7 @@
 
 @extends('admin.common.layout2')
 
-@section('title', '商品カテゴリーの編集')
+@section('title', 'カテゴリーの編集')
 
 @section('contents')
 <main>

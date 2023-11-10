@@ -108,9 +108,9 @@
 {{--                            <a href="{{ url(config('custom.page.category3_detail.url').'/'.$post->id) }}">--}}
                                 <p>
                                     @if(isset($post->file_path))
-                                        <img src="{{ Storage::disk('post')->url($post->file_path) }}" alt="{{ $post->title }}" loading="lazy" alt="blog_img">
+                                        <img src="{{ Storage::disk('post')->url($post->file_path) }}" alt="{{ $post->title }}" height="300" width="400" loading="lazy" alt="blog_img">
                                     @else
-                                        <img src="{{ Storage::disk('post')->url('noimage_post.jpg') }}" alt="{{ $post->title }}" loading="lazy" alt="noimage">
+                                        <img src="{{ Storage::disk('post')->url('noimage_post.jpg') }}" alt="{{ $post->title }}" height="300" width="400" loading="lazy" alt="noimage">
                                     @endif
                                 </p>
                                 <h3>{{ $post->title }}</h3>
@@ -136,9 +136,9 @@
 {{--                            <a href="{{ url(config('custom.page.category3_detail.url').'/'.$post->id) }}">--}}
                                 <p>
                                     @if(isset($post->file_path))
-                                        <img src="{{ Storage::disk('post')->url($post->file_path) }}" alt="{{ $post->title }}" loading="lazy" alt="blog_img">
+                                        <img src="{{ Storage::disk('post')->url($post->file_path) }}" alt="{{ $post->title }}" height="300" width="400" loading="lazy" alt="blog_img">
                                     @else
-                                        <img src="{{ Storage::disk('post')->url('noimage_post.jpg') }}" alt="{{ $post->title }}" loading="lazy" alt="noimage">
+                                        <img src="{{ Storage::disk('post')->url('noimage_post.jpg') }}" alt="{{ $post->title }}" height="300" width="400" loading="lazy" alt="noimage">
                                     @endif
                                 </p>
                                 <h3>{{ $post->title }}</h3>
